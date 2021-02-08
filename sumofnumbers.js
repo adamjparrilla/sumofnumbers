@@ -1,22 +1,20 @@
+const testNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
 function sumFor(list) {
-
   let forSum = 0;
-  for (let i = 0; i < list.length; i++) {
-
+  for (let i = 0; i <= list.length; i++) {
     forSum += i;
   }
 
   return forSum;
 }
 
-console.log(sumFor([1, 2, 3, 4]));
+console.log(sumFor(testNums));
 
 function sumWhile(list) {
-
   let whileSum = 0;
   let comp = 0;
   while(comp < list.length) {
-
     whileSum += list[comp];
     comp++;
   }
@@ -24,30 +22,21 @@ function sumWhile(list) {
   return whileSum;
 }
 
-console.log(sumWhile([1, 2, 3, 4]));
+console.log(sumWhile(testNums));
 
 function sumRecursion(list) {
-
-  let recursiveSum = 0;
-  let comp = 0;
-  if (comp === list.length) {
-
-    return recursiveSum;
-  } else {
-
-    recursiveSum += list[comp];
-    sumRecursion(list[comp++]);
+  if (list.length === 0) {
+    return 0;
   }
 
-  return recursiveSum;
+  return list[0] + sumRecursion(list.slice(1, list.length));
 }
 
-console.log(sumRecursion([1, 2, 3, 4]));
+console.log(sumRecursion(testNums));
+
 
 function sumTheSimpleWay(list) {
-
-  let simpleSum =  _.reduce(list, function(memo, num){ return memo + num; }, 0);
-  return simpleSum;
+  return _.reduce(list, function(memo, num) { return memo + num; }, 0);
 }
 
-console.log(sumTheSimpleWay([1, 2, 3, 4]));
+console.log(sumTheSimpleWay(testNums));
